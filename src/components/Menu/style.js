@@ -8,8 +8,9 @@ export const Wrapper = styled.div`
   ${({ theme }) => css`
     padding-top: ${theme.spaces.big};
     padding-bottom: ${theme.spaces.big};
+    background-color: ${theme.colors.black};
+
   `}
-  background-color: #303030;
   ${media.lessThan('small')`
       flex-direction: column; 
       align-items: center; 
