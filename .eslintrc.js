@@ -22,5 +22,7 @@ module.exports = {
     'react/jsx-one-expression-per-line': 'off',
     'react/no-unescaped-entities': 'off',
     'linebreak-style': 'off',
+    'no-undef': 'off',
+    'implicit-arrow-linebreak': 'off',
   },
 };

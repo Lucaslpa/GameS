@@ -5,7 +5,7 @@ export const GlobalStyle = createGlobalStyle`
     border: none; 
          margin: 0;
          padding: 0; 
-    font-family: Roboto,-apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    position:relative; 
   }
   html {
     font-size: 62.5% 
@@ -14,8 +14,9 @@ export const GlobalStyle = createGlobalStyle`
   * {
       font-family: Roboto,-apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       border: none; 
-         margin: 0;
-         padding: 0; 
+      margin: 0;
+      padding: 0; 
+      box-sizing: border-box;
     }
 
 `;
