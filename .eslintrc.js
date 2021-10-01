@@ -24,5 +24,7 @@ module.exports = {
     'linebreak-style': 'off',
     'no-undef': 'off',
     'implicit-arrow-linebreak': 'off',
+    'react/require-default-props': 'off',
+    'react/forbid-prop-types': 'off',
   },
 };

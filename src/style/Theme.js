@@ -7,6 +7,6 @@ export default {
     yellow: '#faf600',
   },
   fonts: { big: '2.3rem', medium: '1.5rem', small: '1rem' },
-  spaces: { small: '0.5rem', medium: '1rem', big: '2rem', xxbig: '5rem' },
+  spaces: { small: '0.5rem', medium: '1rem', big: '2rem', xbig: '4rem', xxbig: '5rem' },
   radius: '0.3rem',
 };

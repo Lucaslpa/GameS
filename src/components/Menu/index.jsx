@@ -1,7 +1,6 @@
 import React from 'react';
 import { Search as SearchSVG } from '@styled-icons/boxicons-regular';
 import * as S from './style';
-import cartSVG from '../../assets/cart-icon.svg';
 import { Responsive } from '../Responsive';
 
 export const Menu = () => (
@@ -15,7 +14,7 @@ export const Menu = () => (
     </S.Search>
     <Responsive screen="web">
       <S.Cart data-testid="cart web">
-        <img alt="cart" src={cartSVG} />
+        <img alt="cart" src="/assets/cart-icon.svg" />
         <S.ProductsInCart>
           <span>8</span>
         </S.ProductsInCart>
@@ -23,7 +22,7 @@ export const Menu = () => (
     </Responsive>
     <Responsive screen="mobile">
       <S.CartMobile data-testid="cart mobile">
-        <img alt="cart" src={cartSVG} />
+        <img alt="cart" src="/assets/cart-icon.svg" />
         <S.ProductsInCart>
           <span>8</span>
         </S.ProductsInCart>
