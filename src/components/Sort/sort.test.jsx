@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react';
 import { Sort } from '.';
 import { renderConfig } from '../../utils/RenderConfig';
 
-describe('Menu', () => {
+describe('Sort', () => {
   it('should render sort by', () => {
     renderConfig(<Sort />);
 

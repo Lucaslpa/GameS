@@ -5,8 +5,7 @@ export default {
   title: 'ProductInfos',
   component: ProductInfos,
   args: {
-    product: products[4],
-    freight: 10,
+    product: products[6],
   },
 };
 

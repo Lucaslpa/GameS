@@ -3,7 +3,7 @@ import { ListProducts } from '.';
 import { renderConfig } from '../../utils/RenderConfig';
 import products from '../../db/products';
 
-describe('Menu', () => {
+describe('ListProducts', () => {
   it('should render products', () => {
     renderConfig(<ListProducts products={products} />);
     const getProducts = screen.getAllByAltText('product');

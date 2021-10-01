@@ -5,43 +5,28 @@ import { AddShoppingCart as AddShoppingCartSVG } from '@styled-icons/material-ou
 
 import * as S from './style';
 
-export const ProductInfos = ({ product, freight }) => {
-  const [Price, setPrice] = useState(product.price + freight);
+export const ProductInfos = ({ product }) => {
+  const [Product] = useState(product);
 
-  function handlePriceCalc(quantity) {
-    const priceQuantity = product.price * quantity;
-    console.log(priceQuantity);
-    const priceWithFreight = priceQuantity + freight;
-    setPrice(priceWithFreight.toFixed(2));
-  }
-
-  if (product.name && product.price) {
+  if (Product.name && Product.price) {
     return (
       <S.Wrapper>
         <ArrowBarLeftSVG />
         <S.Product>
-          <img alt="product" src={`/assets/${product.image}`} />
+          <img alt="product" src={`/assets/${Product.image}`} />
 
           <div>
-            <h1 data-testid="name">{product.name}</h1>
-            <span data-testid="price">price: {product.price}</span>
-            <span data-testid="freight">freight: ${freight}</span>
-            <div>
-              <span>Quantity: </span>
-              <input
-                min={1}
-                data-testid="quantity"
-                defaultValue={1}
-                onChange={(e) => {
-                  handlePriceCalc(e.target.value);
-                }}
-                type="number"
-              />
-            </div>
-            <button type="button" arial-label="buy product">
+            <h1 data-testid="name">{Product.name}</h1>
+            <span data-testid="price">price: {Product.price}</span>
+
+            <button
+              data-testid="button"
+              type="button"
+              arial-label="buy product"
+            >
               {' '}
               <AddShoppingCartSVG />
-              Add to cart: ${Price}{' '}
+              <span>Add to cart: ${Product.price}</span>
             </button>
           </div>
         </S.Product>
@@ -53,5 +38,4 @@ export const ProductInfos = ({ product, freight }) => {
 
 ProductInfos.propTypes = {
   product: PropTypes.object.isRequired,
-  freight: PropTypes.number.isRequired,
 };
