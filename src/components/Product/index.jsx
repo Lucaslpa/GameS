@@ -12,12 +12,12 @@ export const Product = ({ product }) => {
 
         <S.Hover>
           <S.Buttons>
-            <a href="/">
+            <a data-testid="link" href="/">
               {' '}
               <AddShoppingCartSVG />
               Add
             </a>
-            <button type="button">
+            <button data-testid="button" type="button">
               {' '}
               <HeartSVG />
             </button>
