@@ -15,7 +15,7 @@ export const Product = ({ product }) => {
             <a data-testid="link" href="/">
               {' '}
               <AddShoppingCartSVG />
-              Add
+              Buy
             </a>
             <button data-testid="button" type="button">
               {' '}
