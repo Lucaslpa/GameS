@@ -62,7 +62,6 @@ export const infos = styled.div`
     padding: ${theme.spaces.big};
   `}
   h1 {
-    white-space: nowrap;
     ${({ theme }) => css`
       font-size: ${theme.fonts.medium};
     `}
@@ -77,6 +76,7 @@ export const infos = styled.div`
 `;
 
 export const Hover = styled.div`
+  z-index: 10;
   height: 100%;
   width: 100%;
   display: flex;
@@ -96,9 +96,8 @@ export const Hover = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  width: 100%;
-  max-width: 25rem;
-  max-height: 32rem;
+  width: 25rem;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

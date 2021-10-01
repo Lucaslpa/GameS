@@ -11,14 +11,12 @@ describe('Product', () => {
   });
   it('Should render Name and Price', () => {
     renderConfig(<Product product={products[0]} />);
-    const names = screen.getAllByText(products[0].name);
-    const prices = screen.getAllByText(`$ ${products[0].price}`);
+    const names = screen.getByText(products[0].name);
+    const prices = screen.getByText(`$ ${products[0].price}`);
 
-    expect(names[0]).toBeInTheDocument();
-    expect(names[1]).toBeInTheDocument();
+    expect(names).toBeInTheDocument();
 
-    expect(prices[0]).toBeInTheDocument();
-    expect(prices[1]).toBeInTheDocument();
+    expect(prices).toBeInTheDocument();
   });
 
   it('Should render button and link', () => {

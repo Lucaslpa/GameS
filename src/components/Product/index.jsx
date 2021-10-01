@@ -22,11 +22,6 @@ export const Product = ({ product }) => {
               <HeartSVG />
             </button>
           </S.Buttons>
-
-          <S.infos style={{ color: 'white' }}>
-            <h1>{product.name}</h1>
-            <span>$ {product.price}</span>
-          </S.infos>
         </S.Hover>
         <S.infos>
           <h1>{product.name}</h1>
