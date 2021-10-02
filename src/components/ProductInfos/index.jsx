@@ -4,7 +4,7 @@ import { AddShoppingCart as AddShoppingCartSVG } from '@styled-icons/material-ou
 
 import * as S from './style';
 
-export const ProductInfos = ({ product }) => {
+export const ProductInfos = ({ product, onClick }) => {
   const [Product] = useState(product);
 
   if (Product.name && Product.price) {
@@ -21,6 +21,7 @@ export const ProductInfos = ({ product }) => {
               data-testid="button"
               type="button"
               arial-label="buy product"
+              onClick={() => onClick()}
             >
               {' '}
               <AddShoppingCartSVG />
@@ -36,4 +37,5 @@ export const ProductInfos = ({ product }) => {
 
 ProductInfos.propTypes = {
   product: PropTypes.object.isRequired,
+  onClick: PropTypes.func,
 };

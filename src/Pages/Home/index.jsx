@@ -10,6 +10,9 @@ export const HomeTemplate = ({ children }) => {
   const [FavoritesState] = useFavoritesContext();
   const { cart } = CartState;
   const { favorites } = FavoritesState;
+  React.useEffect(() => {
+    console.log(CartState);
+  }, [CartState]);
   if (children) {
     return (
       <S.Wrapper>
