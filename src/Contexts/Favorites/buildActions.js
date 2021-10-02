@@ -1,6 +1,6 @@
-import { SET_FAVORITE } from './actions';
+import { SET_FAVORITES } from './actions';
 
 export const buildActions = (dispatch) => ({
-  SET_FAVORITE: (productFavorite) =>
-    dispatch({ type: SET_FAVORITE, payload: productFavorite }),
+  SET_FAVORITES: (newFavorites) =>
+    dispatch({ type: SET_FAVORITES, payload: newFavorites }),
 });
