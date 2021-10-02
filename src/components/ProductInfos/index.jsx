@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { ArrowBarLeft as ArrowBarLeftSVG } from '@styled-icons/bootstrap';
 import { AddShoppingCart as AddShoppingCartSVG } from '@styled-icons/material-outlined';
 
 import * as S from './style';
@@ -11,7 +10,6 @@ export const ProductInfos = ({ product }) => {
   if (Product.name && Product.price) {
     return (
       <S.Wrapper>
-        <ArrowBarLeftSVG />
         <S.Product>
           <img alt="product" src={`/assets/${Product.image}`} />
 

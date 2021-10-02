@@ -6,20 +6,7 @@ export const Wrapper = styled.div`
   max-width: 60rem;
   display: flex;
   flex-direction: column;
-  -webkit-box-shadow: 5px 0px 8px -3px rgba(186, 186, 186, 0.32);
-  box-shadow: 5px 0px 8px -3px rgba(186, 186, 186, 0.32);
-  > svg {
-    max-width: 5rem;
-    cursor: pointer;
-    transition: 0.2s;
-    ${({ theme }) => css`
-      fill: ${theme.colors.primary};
-      &:hover {
-        fill: ${theme.colors.secondary};
-        transform: scale(1.1);
-      }
-    `}
-  }
+ 
 `;
 
 export const Product = styled.section`
@@ -73,7 +60,7 @@ export const Product = styled.section`
       }
       button {
         margin: 1rem 0;
-        padding: ${theme.spaces.big};
+        padding: ${theme.spaces.medium};
         display: flex;
         align-items: center;
         justify-content: center;

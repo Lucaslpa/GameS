@@ -118,7 +118,7 @@ export const Infos = styled.div`
     button {
       max-width: 5rem;
       margin: 1rem 0;
-      padding: ${theme.spaces.big};
+      padding: ${theme.spaces.medium};
       display: flex;
       align-items: center;
       justify-content: center;
