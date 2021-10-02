@@ -1,27 +1,32 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { ArrowBarLeft as ArrowBarLeftSVG } from '@styled-icons/bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as S from './style';
 import { ProductInfos } from '../../components/ProductInfos';
 
-export const ProductInfosTemplate = ({ product }) => {
-  if (product) {
-    return (
-      <S.Wrapper>
-        <S.Header>
-          <Link to="/">
-            <ArrowBarLeftSVG />
-          </Link>{' '}
-        </S.Header>
+export const ProductInfosTemplate = ({ products }) => {
+  const { id } = useParams();
+  const [Product, setProduct] = React.useState();
 
-        <ProductInfos product={product} />
-      </S.Wrapper>
-    );
-  }
-  return null;
+  React.useEffect(
+    () =>
+      setProduct(products.filter((product) => product.id === Number(id))[0]),
+    [products]
+  );
+
+  return (
+    <S.Wrapper>
+      <S.Header>
+        <Link to="/">
+          <ArrowBarLeftSVG />
+        </Link>{' '}
+      </S.Header>
+
+      {Product && <ProductInfos product={Product} />}
+    </S.Wrapper>
+  );
 };
-
 ProductInfosTemplate.propTypes = {
-  product: PropTypes.object.isRequired,
+  products: PropTypes.array.isRequired,
 };
