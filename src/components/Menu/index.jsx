@@ -1,7 +1,26 @@
 import React from 'react';
 import { Search as SearchSVG } from '@styled-icons/boxicons-regular';
+import { Link } from 'react-router-dom';
+import { Heart as HeartSVG } from '@styled-icons/boxicons-regular/Heart';
+import PropTypes from 'prop-types';
 import * as S from './style';
-import { Responsive } from '../Responsive';
+
+const NavOption = ({ url, children, quantity }) => (
+  <Link to={url}>
+    <S.NavOption data-testid="cart mobile">
+      {children}
+      <S.ProductsInCart>
+        <span>{quantity}</span>
+      </S.ProductsInCart>
+    </S.NavOption>
+  </Link>
+);
+
+NavOption.propTypes = {
+  url: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+  quantity: PropTypes.number.isRequired,
+};
 
 export const Menu = () => (
   <S.Wrapper>
@@ -12,21 +31,13 @@ export const Menu = () => (
         <SearchSVG />
       </button>
     </S.Search>
-    <Responsive screen="web">
-      <S.Cart data-testid="cart web">
+    <S.Nav>
+      <NavOption url="/Cart" quantity={3}>
         <img alt="cart" src="/assets/cart-icon.svg" />
-        <S.ProductsInCart>
-          <span>8</span>
-        </S.ProductsInCart>
-      </S.Cart>
-    </Responsive>
-    <Responsive screen="mobile">
-      <S.CartMobile data-testid="cart mobile">
-        <img alt="cart" src="/assets/cart-icon.svg" />
-        <S.ProductsInCart>
-          <span>8</span>
-        </S.ProductsInCart>
-      </S.CartMobile>
-    </Responsive>
+      </NavOption>
+      <NavOption url="/Favorites" quantity={3}>
+        <HeartSVG aria-label="favorites" />
+      </NavOption>
+    </S.Nav>
   </S.Wrapper>
 );
