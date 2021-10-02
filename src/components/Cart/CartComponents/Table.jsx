@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Delete as DeleteSVG } from '@styled-icons/material-outlined/';
 import * as S from '../style';
 
-export const Table = ({ products, onChange }) => (
+export const Table = ({ products, onChange, onDeleteProduct }) => (
   <S.Products>
     <thead>
       <tr>
@@ -43,7 +43,7 @@ export const Table = ({ products, onChange }) => (
             />
           </td>
           <td>
-            <DeleteSVG />
+            <DeleteSVG onClick={() => onDeleteProduct(product.id)} />
           </td>
         </S.Product>
       ))}
@@ -54,4 +54,5 @@ export const Table = ({ products, onChange }) => (
 Table.propTypes = {
   products: PropTypes.array.isRequired,
   onChange: PropTypes.func,
+  onDeleteProduct: PropTypes.func,
 };

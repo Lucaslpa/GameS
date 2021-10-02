@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { HeartBroken as HeartBrokenSVG } from '@styled-icons/icomoon';
 import * as S from '../style';
 
-export const Table = ({ products }) => (
+export const Table = ({ products, onDeleteProduct }) => (
   <S.Products>
     <thead>
       <tr>
@@ -33,7 +33,7 @@ export const Table = ({ products }) => (
           <td>
             <S.Buttons>
               <a href="/">buy</a>
-              <button type="button">
+              <button type="button" onClick={() => onDeleteProduct(product.id)}>
                 <HeartBrokenSVG />
               </button>
             </S.Buttons>
@@ -46,4 +46,5 @@ export const Table = ({ products }) => (
 
 Table.propTypes = {
   products: PropTypes.array.isRequired,
+  onDeleteProduct: PropTypes.func,
 };

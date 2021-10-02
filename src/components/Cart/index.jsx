@@ -6,7 +6,7 @@ import * as S from './style';
 import { Responsive } from '../Responsive';
 import { Table } from './CartComponents/Table';
 
-export const Cart = ({ products, freight = 10 }) => {
+export const Cart = ({ products, freight = 10, onDeleteProduct }) => {
   const [finalPrice, setFinalPrice] = useState(0);
   const [Products, setProducts] = useState(products);
 
@@ -37,11 +37,19 @@ export const Cart = ({ products, freight = 10 }) => {
     handlePriceCalc();
   }, [Products]);
 
+  useEffect(() => {
+    setProducts(products);
+  }, [products]);
+
   if (Products.length && Products) {
     return (
       <S.Wrapper>
         <Responsive screen="web">
-          <Table products={Products} onChange={handleChangeQuantityProduct} />
+          <Table
+            products={Products}
+            onChange={handleChangeQuantityProduct}
+            onDeleteProduct={onDeleteProduct}
+          />
         </Responsive>
         <Responsive screen="mobile">
           <S.ProductsM>
@@ -60,7 +68,7 @@ export const Cart = ({ products, freight = 10 }) => {
                     type="number"
                     defaultValue={product.quantity ? product.quantity : 1}
                   />
-                  <DeleteSVG />
+                  <DeleteSVG onClick={() => onDeleteProduct(product.id)} />
                 </div>
               </div>
             ))}
@@ -82,4 +90,5 @@ export const Cart = ({ products, freight = 10 }) => {
 Cart.propTypes = {
   products: PropTypes.array.isRequired,
   freight: PropTypes.number,
+  onDeleteProduct: PropTypes.func,
 };

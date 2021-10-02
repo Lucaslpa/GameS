@@ -4,23 +4,38 @@ import { ArrowBarLeft as ArrowBarLeftSVG } from '@styled-icons/bootstrap';
 import { Link } from 'react-router-dom';
 import * as S from './style';
 import { Cart } from '../../components/Cart';
+import { useCartContext } from '../../Contexts/Cart';
+import { buildActions } from '../../Contexts/Cart/buildActions';
 
 export const CartTemplate = ({ products }) => {
-  if (products) {
-    return (
-      <S.Wrapper>
-        <S.Header>
-          <Link to="/">
-            <ArrowBarLeftSVG />
-          </Link>{' '}
-          <span>Cart</span>
-        </S.Header>
+  const [state, dispatch] = useCartContext();
+  const CartContext = buildActions(dispatch);
+  const { cart } = state;
 
-        <Cart products={products} />
-      </S.Wrapper>
+  function handleDeleteProductFromCart(productID) {
+    const CartWithoutRemovedProduct = cart.filter(
+      (product) => product.id !== productID
     );
+
+    CartContext.SET_CART(CartWithoutRemovedProduct);
   }
-  return null;
+
+  return (
+    <S.Wrapper>
+      <S.Header>
+        <Link to="/">
+          <ArrowBarLeftSVG />
+        </Link>{' '}
+        <span>Cart</span>
+      </S.Header>
+      {products && products.length ? (
+        <Cart
+          products={products}
+          onDeleteProduct={handleDeleteProductFromCart}
+        />
+      ) : null}
+    </S.Wrapper>
+  );
 };
 
 CartTemplate.propTypes = {

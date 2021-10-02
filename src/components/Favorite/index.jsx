@@ -5,12 +5,12 @@ import * as S from './style';
 import { Responsive } from '../Responsive';
 import { Table } from './FavoriteComponents/Table';
 
-export const Favorite = ({ products }) => {
+export const Favorite = ({ products, onDeleteProduct }) => {
   if (products.length && products) {
     return (
       <S.Wrapper>
         <Responsive screen="web">
-          <Table products={products} />
+          <Table products={products} onDeleteProduct={onDeleteProduct} />
         </Responsive>
         <Responsive screen="mobile">
           <S.ProductsM>
@@ -21,7 +21,10 @@ export const Favorite = ({ products }) => {
                 <span>{product.price}</span>
                 <S.Buttons>
                   <a href="/">buy</a>
-                  <button type="button">
+                  <button
+                    type="button"
+                    onClick={() => onDeleteProduct(product.id)}
+                  >
                     <HeartBrokenSVG />
                   </button>
                 </S.Buttons>
@@ -37,4 +40,5 @@ export const Favorite = ({ products }) => {
 
 Favorite.propTypes = {
   products: PropTypes.array.isRequired,
+  onDeleteProduct: PropTypes.func,
 };
