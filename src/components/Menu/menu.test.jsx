@@ -15,10 +15,10 @@ describe('Menu', () => {
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
 
-  it('should render cart', () => {
+  it('should render navigator', () => {
     renderConfig(<Menu />);
 
-    expect(screen.getByTestId(/cart web/i)).toBeInTheDocument();
-    expect(screen.getByTestId(/cart mobile/i)).toBeInTheDocument();
+    expect(screen.getByAltText(/cart/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/favorites/i)).toBeInTheDocument();
   });
 });
