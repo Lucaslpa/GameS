@@ -9,27 +9,21 @@ import products from './db/products';
 
 export const Routes = () => (
   <Router>
-    <Switch>
-      <Route exact path="/">
-        <HomeTemplate>
+    <HomeTemplate>
+      <Switch>
+        <Route exact path="/">
           <ListProductsTemplate products={products} />
-        </HomeTemplate>
-      </Route>
-      <Route path="/Favorites">
-        <HomeTemplate>
+        </Route>
+        <Route path="/Favorites">
           <FavoriteTemplate products={products} />
-        </HomeTemplate>
-      </Route>
-      <Route path="/Cart">
-        <HomeTemplate>
+        </Route>
+        <Route path="/Cart">
           <CartTemplate products={products} />
-        </HomeTemplate>
-      </Route>
-      <Route path="/Product">
-        <HomeTemplate>
+        </Route>
+        <Route path="/Product">
           <ProductInfosTemplate product={products[3]} />
-        </HomeTemplate>
-      </Route>
-    </Switch>
+        </Route>
+      </Switch>
+    </HomeTemplate>
   </Router>
 );

@@ -1,10 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import * as S from './style';
 import { ListProducts } from '../../components/ListProducts';
 import { Sort } from '../../components/Sort';
+import { useProductsContext } from '../../Contexts/Products';
+import { buildActions } from '../../Contexts/Products/buildActions';
+import productsDB from '../../db/products';
 
-export const ListProductsTemplate = ({ products }) => {
+export const ListProductsTemplate = () => {
+  const [state, dispatch] = useProductsContext();
+  const ProductsContext = buildActions(dispatch);
+  const { products } = state;
+
+  React.useEffect(() => {
+    ProductsContext.SET_PRODUCTS(productsDB);
+  }, []);
+
   if (products) {
     return (
       <S.Wrapper>
@@ -16,8 +26,4 @@ export const ListProductsTemplate = ({ products }) => {
     );
   }
   return null;
-};
-
-ListProductsTemplate.propTypes = {
-  products: PropTypes.array.isRequired,
 };
