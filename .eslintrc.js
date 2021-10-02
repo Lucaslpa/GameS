@@ -29,5 +29,6 @@ module.exports = {
     'react/jsx-curly-newline': 'off',
     'no-param-reassign': 'off',
     'operator-linebreak': 'off',
+    'react/jsx-no-bind': 'off',
   },
 };

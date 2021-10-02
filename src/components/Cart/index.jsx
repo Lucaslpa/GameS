@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Delete as DeleteSVG } from '@styled-icons/material-outlined/';
+
 import * as S from './style';
+import { Responsive } from '../Responsive';
+import { Table } from './CartComponents/Table';
 
 export const Cart = ({ products, freight = 0 }) => {
   const [finalPrice, setFinalPrice] = useState(0);
@@ -35,55 +39,32 @@ export const Cart = ({ products, freight = 0 }) => {
   if (products.length && products) {
     return (
       <S.Wrapper>
-        <S.Products>
-          <thead>
-            <tr>
-              <th>
-                <span>Product</span>
-              </th>
-              <th>
-                <span>Name</span>
-              </th>
-
-              <th>
-                <span>Price</span>
-              </th>
-              <th>
-                <span>Quantity</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
+        <Responsive screen="web">
+          <Table products={products} onChange={handleChangeQuantityProduct} />
+        </Responsive>
+        <Responsive screen="mobile">
+          <S.ProductsM>
             {products.map((product) => (
-              <S.Product key={product.id}>
-                <td>
-                  <img alt="Product" src={`/assets/${product.image}`} />
-                </td>
-                <td>
-                  <span data-testid="name">{product.name}</span>
-                </td>
-                <td>
-                  <span data-testid="price">$ {product.price}</span>
-                </td>
-                <td>
+              <div key={product.id}>
+                <img alt="product" src={`/assets/${product.image}`} />
+                <h1>{product.name}</h1>
+                <span>{product.price}</span>
+                <div>
                   <input
                     min={1}
                     data-testid="quantity"
                     onChange={(e) =>
-                      handleChangeQuantityProduct(
-                        product.id,
-                        Number(e.target.value)
-                      )
+                      handleChangeQuantityProduct(product.id, e.target.value)
                     }
                     type="number"
                     defaultValue={product.quantity}
                   />
-                </td>
-              </S.Product>
+                  <DeleteSVG />
+                </div>
+              </div>
             ))}
-          </tbody>
-        </S.Products>
-
+          </S.ProductsM>
+        </Responsive>
         <S.Infos>
           <span data-testid="freight">Freight: ${freight}</span>
           <span data-testid="finalPrice"> Final price: ${finalPrice}</span>
