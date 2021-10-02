@@ -6,7 +6,7 @@ import * as S from './style';
 import { Responsive } from '../Responsive';
 import { Table } from './CartComponents/Table';
 
-export const Cart = ({ products, freight = 0 }) => {
+export const Cart = ({ products, freight = 10 }) => {
   const [finalPrice, setFinalPrice] = useState(0);
   const [Products, setProducts] = useState(products);
 

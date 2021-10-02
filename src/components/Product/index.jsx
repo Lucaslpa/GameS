@@ -5,7 +5,7 @@ import { AddShoppingCart as AddShoppingCartSVG } from '@styled-icons/material-ou
 import { Heart as HeartSVG } from '@styled-icons/boxicons-regular/Heart';
 import * as S from './style';
 
-export const Product = ({ product }) => {
+export const Product = ({ product, onClick }) => {
   if ((product.image, product.name, product.price)) {
     return (
       <S.Wrapper>
@@ -18,7 +18,11 @@ export const Product = ({ product }) => {
               <AddShoppingCartSVG />
               Buy
             </Link>
-            <button data-testid="button" type="button">
+            <button
+              onClick={() => onClick()}
+              data-testid="button"
+              type="button"
+            >
               {' '}
               <HeartSVG />
             </button>
@@ -36,4 +40,5 @@ export const Product = ({ product }) => {
 
 Product.propTypes = {
   product: PropTypes.object.isRequired,
+  onClick: PropTypes.func,
 };
