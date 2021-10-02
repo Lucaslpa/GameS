@@ -5,14 +5,12 @@ import { Menu } from '../../components/Menu';
 import { useCartContext } from '../../Contexts/Cart';
 import { useFavoritesContext } from '../../Contexts/Favorites';
 
-export const HomeTemplate = ({ children }) => {
+export const HomeTemplate = ({ children, onSearch }) => {
   const [CartState] = useCartContext();
   const [FavoritesState] = useFavoritesContext();
   const { cart } = CartState;
   const { favorites } = FavoritesState;
-  React.useEffect(() => {
-    console.log(CartState);
-  }, [CartState]);
+
   if (children) {
     return (
       <S.Wrapper>
@@ -20,6 +18,7 @@ export const HomeTemplate = ({ children }) => {
           <Menu
             CartQuantity={cart.length}
             FavoritesQuantity={favorites.length}
+            onSearch={onSearch}
           />
         </header>
         <main>{children}</main>
@@ -31,4 +30,5 @@ export const HomeTemplate = ({ children }) => {
 
 HomeTemplate.propTypes = {
   children: PropTypes.node.isRequired,
+  onSearch: PropTypes.func,
 };

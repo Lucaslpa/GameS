@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Search as SearchSVG } from '@styled-icons/boxicons-regular';
 import { Link } from 'react-router-dom';
 import { Heart as HeartSVG } from '@styled-icons/boxicons-regular/Heart';
@@ -22,27 +22,38 @@ NavOption.propTypes = {
   quantity: PropTypes.number.isRequired,
 };
 
-export const Menu = ({ CartQuantity = 0, FavoritesQuantity = 0 }) => (
-  <S.Wrapper>
-    <S.Logo aria-label="Site logo">GameS</S.Logo>
-    <S.Search>
-      <input arial-label="Search field" type="text" />
-      <button type="submit">
-        <SearchSVG />
-      </button>
-    </S.Search>
-    <S.Nav>
-      <NavOption url="/Cart" quantity={CartQuantity}>
-        <img alt="cart" src="/assets/cart-icon.svg" />
-      </NavOption>
-      <NavOption url="/Favorites" quantity={FavoritesQuantity}>
-        <HeartSVG aria-label="favorites" />
-      </NavOption>
-    </S.Nav>
-  </S.Wrapper>
-);
+export const Menu = ({ CartQuantity = 0, FavoritesQuantity = 0, onSearch }) => {
+  const [Search, setSearch] = useState('');
+  return (
+    <S.Wrapper>
+      <S.Logo aria-label="Site logo">GameS</S.Logo>
+      <S.Search>
+        <input
+          arial-label="Search field"
+          type="text"
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <Link
+          to={Search ? `/?search=${Search}` : '/'}
+          onClick={() => onSearch(Search)}
+        >
+          <SearchSVG />
+        </Link>
+      </S.Search>
+      <S.Nav>
+        <NavOption url="/Cart" quantity={CartQuantity}>
+          <img alt="cart" src="/assets/cart-icon.svg" />
+        </NavOption>
+        <NavOption url="/Favorites" quantity={FavoritesQuantity}>
+          <HeartSVG aria-label="favorites" />
+        </NavOption>
+      </S.Nav>
+    </S.Wrapper>
+  );
+};
 
 Menu.propTypes = {
   CartQuantity: PropTypes.number.isRequired,
   FavoritesQuantity: PropTypes.number.isRequired,
+  onSearch: PropTypes.func,
 };

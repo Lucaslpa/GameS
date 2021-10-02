@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { HomeTemplate } from './Pages/Home';
 import { FavoriteTemplate } from './Pages/Favorite';
 import { CartTemplate } from './Pages/Cart';
@@ -9,6 +9,8 @@ import { useCartContext } from './Contexts/Cart';
 import { useFavoritesContext } from './Contexts/Favorites';
 import { useProductsContext } from './Contexts/Products';
 import { buildActions } from './Contexts/Products/buildActions';
+import { useQuery } from './Hooks/useQuery';
+import { SearchProducts } from './utils/Search';
 
 import productsDB from './db/products';
 
@@ -20,28 +22,36 @@ export const Routes = () => {
   const { cart } = CartState;
   const { favorites } = FavoritesState;
   const { products } = state;
+  const query = useQuery().get('search');
+
+  function handleSetProducts(search) {
+    if (search) {
+      const result = SearchProducts(search, productsDB);
+      ProductsContext.SET_PRODUCTS(result);
+      return;
+    }
+    ProductsContext.SET_PRODUCTS(productsDB);
+  }
 
   useEffect(() => {
-    ProductsContext.SET_PRODUCTS(productsDB);
+    handleSetProducts(query);
   }, []);
   return (
-    <Router>
-      <HomeTemplate>
-        <Switch>
-          <Route exact path="/">
-            <ListProductsTemplate products={products} />
-          </Route>
-          <Route path="/Favorites">
-            <FavoriteTemplate products={favorites} />
-          </Route>
-          <Route path="/Cart">
-            <CartTemplate products={cart} />
-          </Route>
-          <Route path="/Product/:id">
-            <ProductInfosTemplate products={products} />
-          </Route>
-        </Switch>
-      </HomeTemplate>
-    </Router>
+    <HomeTemplate onSearch={handleSetProducts}>
+      <Switch>
+        <Route exact path="/">
+          <ListProductsTemplate products={products} />
+        </Route>
+        <Route path="/Favorites">
+          <FavoriteTemplate products={favorites} />
+        </Route>
+        <Route path="/Cart">
+          <CartTemplate products={cart} />
+        </Route>
+        <Route path="/Product/:id">
+          <ProductInfosTemplate products={products} />
+        </Route>
+      </Switch>
+    </HomeTemplate>
   );
 };

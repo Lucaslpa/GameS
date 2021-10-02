@@ -88,7 +88,10 @@ export const Search = styled.div`
     padding: 0.3rem;
   }
 
-  button {
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     width: 100%;
     height: 100%;
@@ -98,7 +101,7 @@ export const Search = styled.div`
     `}
     padding: 0.5rem;
   }
-  button:hover {
+  a:hover {
     ${({ theme }) => css`
       background-color: ${theme.colors.secondary};
     `}
