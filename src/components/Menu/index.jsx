@@ -22,7 +22,7 @@ NavOption.propTypes = {
   quantity: PropTypes.number.isRequired,
 };
 
-export const Menu = () => (
+export const Menu = ({ CartQuantity = 0, FavoritesQuantity = 0 }) => (
   <S.Wrapper>
     <S.Logo aria-label="Site logo">GameS</S.Logo>
     <S.Search>
@@ -32,12 +32,17 @@ export const Menu = () => (
       </button>
     </S.Search>
     <S.Nav>
-      <NavOption url="/Cart" quantity={3}>
+      <NavOption url="/Cart" quantity={CartQuantity}>
         <img alt="cart" src="/assets/cart-icon.svg" />
       </NavOption>
-      <NavOption url="/Favorites" quantity={3}>
+      <NavOption url="/Favorites" quantity={FavoritesQuantity}>
         <HeartSVG aria-label="favorites" />
       </NavOption>
     </S.Nav>
   </S.Wrapper>
 );
+
+Menu.propTypes = {
+  CartQuantity: PropTypes.number.isRequired,
+  FavoritesQuantity: PropTypes.number.isRequired,
+};

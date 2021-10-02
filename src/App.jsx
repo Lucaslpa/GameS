@@ -1,12 +1,12 @@
 import { Routes } from './routes';
-import { ProductsContextProvider } from './Contexts/Products';
+import { Contexts } from './Contexts';
 
 function App() {
   return (
     <div className="App">
-      <ProductsContextProvider>
+      <Contexts>
         <Routes />
-      </ProductsContextProvider>
+      </Contexts>
     </div>
   );
 }
