@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { AddShoppingCart as AddShoppingCartSVG } from '@styled-icons/material-outlined';
 import { Heart as HeartSVG } from '@styled-icons/boxicons-regular/Heart';
 import * as S from './style';
@@ -12,11 +13,11 @@ export const Product = ({ product }) => {
 
         <S.Hover>
           <S.Buttons>
-            <a data-testid="link" href="/">
+            <Link data-testid="link" to={`/Product/${product.id}`}>
               {' '}
               <AddShoppingCartSVG />
               Buy
-            </a>
+            </Link>
             <button data-testid="button" type="button">
               {' '}
               <HeartSVG />

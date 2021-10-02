@@ -116,7 +116,6 @@ export const Infos = styled.div`
       margin: ${theme.spaces.medium};
     }
     button {
-      max-width: 5rem;
       margin: 1rem 0;
       padding: ${theme.spaces.medium};
       display: flex;
@@ -128,7 +127,7 @@ export const Infos = styled.div`
       cursor: pointer;
       border-radius: ${theme.radius};
       width: 100%;
-      max-width: 40rem;
+      max-width: 25rem;
       transition: 0.4s;
       > svg {
         max-width: 2rem;

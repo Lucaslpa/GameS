@@ -25,6 +25,7 @@ export const Cart = ({ products, freight = 0 }) => {
     const unchangedProducts = Products.filter((prod) => prod.id !== productID);
 
     const defaultPrice = productToChange.price / productToChange.quantity;
+
     const newPrice = defaultPrice * ProductNewQuantity;
     productToChange.price = Number(newPrice.toFixed(2));
     productToChange.quantity = ProductNewQuantity;
@@ -36,15 +37,15 @@ export const Cart = ({ products, freight = 0 }) => {
     handlePriceCalc();
   }, [Products]);
 
-  if (products.length && products) {
+  if (Products.length && Products) {
     return (
       <S.Wrapper>
         <Responsive screen="web">
-          <Table products={products} onChange={handleChangeQuantityProduct} />
+          <Table products={Products} onChange={handleChangeQuantityProduct} />
         </Responsive>
         <Responsive screen="mobile">
           <S.ProductsM>
-            {products.map((product) => (
+            {Products.map((product) => (
               <div key={product.id}>
                 <img alt="product" src={`/assets/${product.image}`} />
                 <h1>{product.name}</h1>
@@ -57,7 +58,7 @@ export const Cart = ({ products, freight = 0 }) => {
                       handleChangeQuantityProduct(product.id, e.target.value)
                     }
                     type="number"
-                    defaultValue={product.quantity}
+                    defaultValue={product.quantity ? product.quantity : 1}
                   />
                   <DeleteSVG />
                 </div>

@@ -24,7 +24,7 @@ export const ProductInfos = ({ product }) => {
             >
               {' '}
               <AddShoppingCartSVG />
-              <span>Add to cart: ${Product.price}</span>
+              <span>Add to cart</span>
             </button>
           </div>
         </S.Product>

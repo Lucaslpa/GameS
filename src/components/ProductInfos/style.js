@@ -3,34 +3,26 @@ import media from 'styled-media-query';
 
 export const Wrapper = styled.div`
   width: 100%;
-  max-width: 60rem;
-  display: flex;
-  flex-direction: column;
- 
+  display: flex; 
+  justify-content: center; 
 `;
 
 export const Product = styled.section`
-  max-width: 80rem;
+  max-width: 40rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  width: 100%; 
+  padding: 3rem; 
   > img {
     width: 20rem;
     margin: 0 auto;
-
     align-self: center;
   }
-  ${({ theme }) => css`
-    padding: ${theme.spaces.xxbig};
-    ${media.lessThan('medium')`
-    padding: 0;
-       
-    `}
-  `}
-
   > div {
     display: flex;
     flex-direction: column;
+    padding: 0 !important; 
     width: 100%;
     ${media.lessThan('medium')`
   padding: 3rem 1rem;
@@ -40,7 +32,7 @@ export const Product = styled.section`
     ${({ theme }) => css`
       padding: ${theme.spaces.xxbig};
       h1 {
-        margin: 1rem 0;
+        margin: 3rem 0;
 
         font-size: ${theme.fonts.big};
       }
@@ -70,7 +62,7 @@ export const Product = styled.section`
         cursor: pointer;
         border-radius: ${theme.radius};
         width: 100%;
-        max-width: 40rem;
+        
         transition: 0.4s;
         > svg {
           max-width: 2rem;

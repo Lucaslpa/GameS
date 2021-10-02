@@ -7,9 +7,9 @@ export const HomeTemplate = ({ children }) => {
   if (children) {
     return (
       <S.Wrapper>
-        <menu>
+        <header>
           <Menu />
-        </menu>
+        </header>
         <main>{children}</main>
       </S.Wrapper>
     );

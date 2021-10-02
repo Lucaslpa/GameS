@@ -6,6 +6,7 @@ export default {
     grey: '#f5f5f5',
     yellow: '#faf600',
     yellowSecondary: '#b3b000',
+    white: '#fcfcfc',
   },
   fonts: { big: '2.3rem', medium: '1.5rem', small: '1rem' },
   spaces: {

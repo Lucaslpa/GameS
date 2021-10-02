@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import media from 'styled-media-query';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.menu`
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -9,11 +9,54 @@ export const Wrapper = styled.div`
     padding-top: ${theme.spaces.big};
     padding-bottom: ${theme.spaces.big};
     background-color: ${theme.colors.black};
-
   `}
   ${media.lessThan('small')`
       flex-direction: column; 
       align-items: center; 
+  `}
+`;
+
+export const Nav = styled.nav`
+  display: flex;
+  width: 13rem;
+  justify-content: space-around;
+  ${({ theme }) => css`
+    svg {
+      width: 100%;
+      max-width: 4rem;
+      fill: ${theme.colors.white};
+    }
+  `}
+
+  ${media.lessThan('medium')`
+  z-index: 100;
+   position: absolute; 
+   bottom: 3%; 
+   right: 5%;
+  `}
+`;
+
+export const NavOption = styled.div`
+  cursor: pointer;
+  max-width: 5rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  img {
+    width: 100%;
+  }
+  ${({ theme }) => css`
+    border-radius: ${theme.radius};
+    padding: ${theme.spaces.small};
+    ${media.lessThan('medium')`
+    img, svg {
+            background-color: ${theme.colors.primary}; 
+            padding: 0.5rem;
+         }
+         img { 
+           width: 5rem; 
+         }
+    `}
   `}
 `;
 
@@ -36,6 +79,7 @@ export const Search = styled.div`
   input {
     width: 100%;
     height: 100%;
+    min-height: 30px;
     border: solid 1px;
     ${({ theme }) => css`
       border: solid 1px ${theme.colors.primary};
@@ -69,42 +113,6 @@ export const Search = styled.div`
   }
 `;
 
-export const Cart = styled.div`
-  ${({ theme }) => css`
-    border-radius: ${theme.radius};
-    padding: ${theme.spaces.small};
-  `}
-  cursor: pointer;
-  max-width: 5rem;
-  display: flex;
-  align-items: center;
-
-  img {
-    width: 100%;
-  }
-  position: relative;
-`;
-
-export const CartMobile = styled.div`
-  ${({ theme }) => css`
-    border-radius: ${theme.radius};
-    padding: ${theme.spaces.small};
-    border: solid 1px ${theme.colors.black};
-    background-color: ${theme.colors.primary};
-  `}
-  width: 100%;
-  cursor: pointer;
-  max-width: 4rem;
-  display: flex;
-  align-items: center;
-  position: absolute;
-  img {
-    width: 100%;
-  }
-  right: 6%;
-  bottom: 3%;
-`;
-
 export const ProductsInCart = styled.div`
   width: 2.3rem;
   height: 2.3rem;
@@ -124,5 +132,5 @@ export const ProductsInCart = styled.div`
   }
   top: 0%;
   right: -10%;
-  pointer-events: none; 
+  pointer-events: none;
 `;

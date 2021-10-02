@@ -6,6 +6,8 @@ export const GlobalStyle = createGlobalStyle`
          margin: 0;
          padding: 0; 
     position:relative; 
+    height: 100vh; 
+  
   }
   html {
     font-size: 62.5% 

@@ -39,7 +39,7 @@ export const Table = ({ products, onChange }) => (
               data-testid="quantity"
               onChange={(e) => onChange(product.id, e.target.value)}
               type="number"
-              defaultValue={product.quantity}
+              defaultValue={product.quantity ? product.quantity : 1}
             />
           </td>
           <td>
