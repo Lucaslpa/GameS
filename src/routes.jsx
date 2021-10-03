@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { HomeTemplate } from './Pages/Home';
 import { FavoriteTemplate } from './Pages/Favorite';
@@ -11,10 +11,12 @@ import { useProductsContext } from './Contexts/Products';
 import { buildActions } from './Contexts/Products/buildActions';
 import { useQuery } from './Hooks/useQuery';
 import { SearchProducts } from './utils/Search';
+import { SortMethods } from './utils/Sort';
 
 import productsDB from './db/products';
 
 export const Routes = () => {
+  const [currentSort, setCurrentSort] = useState('popularity');
   const [state, dispatch] = useProductsContext();
   const ProductsContext = buildActions(dispatch);
   const [CartState] = useCartContext();
@@ -27,20 +29,30 @@ export const Routes = () => {
   function handleSetProducts(search) {
     if (search) {
       const result = SearchProducts(search, productsDB);
-      ProductsContext.SET_PRODUCTS(result);
+      const sort = SortMethods[currentSort](result);
+      ProductsContext.SET_PRODUCTS(sort);
       return;
     }
-    ProductsContext.SET_PRODUCTS(productsDB);
+    const sort = SortMethods[currentSort](productsDB);
+
+    ProductsContext.SET_PRODUCTS(sort);
   }
 
   useEffect(() => {
     handleSetProducts(query);
   }, []);
+  useEffect(() => {
+    handleSetProducts(query);
+  }, [currentSort]);
+
   return (
     <HomeTemplate onSearch={handleSetProducts}>
       <Switch>
         <Route exact path="/">
-          <ListProductsTemplate products={products} />
+          <ListProductsTemplate
+            products={products}
+            onSelectSortMethod={setCurrentSort}
+          />
         </Route>
         <Route path="/Favorites">
           <FavoriteTemplate products={favorites} />
