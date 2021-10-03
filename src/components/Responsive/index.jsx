@@ -12,6 +12,6 @@ export const Responsive = ({ children, screen }) => (
 );
 
 Responsive.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   screen: PropTypes.string.isRequired,
 };

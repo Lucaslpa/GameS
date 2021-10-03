@@ -46,13 +46,17 @@ describe('Cart', () => {
     renderConfig(<Cart products={[{ ...products[0], quantity: 1 }]} />);
     const input = screen.getAllByTestId('quantity')[0];
     const price = screen.getByTestId('finalPrice');
-    expect(price.textContent).toBe(` Final price: $${products[0].price}`);
+    expect(price.textContent).toBe(` Final price: $${products[0].price + 10}`);
     fireEvent.input(input, { target: { value: 2 } });
-    expect(price.textContent).toBe(` Final price: $${products[0].price * 2}`);
+    expect(price.textContent).toBe(
+      ` Final price: $405.76`
+    );
   });
 
   it('should apply freight to final price', () => {
-    renderConfig(<Cart products={[{ ...products[0], quantity: 1 }]} freight={100} />);
+    renderConfig(
+      <Cart products={[{ ...products[0], quantity: 1 }]} freight={100} />
+    );
     const price = screen.getByTestId('finalPrice');
     expect(price.textContent).toBe(` Final price: $${products[0].price + 100}`);
   });
