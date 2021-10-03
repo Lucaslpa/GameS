@@ -17,14 +17,14 @@ import productsDB from './db/products';
 
 export const Routes = () => {
   const [currentSort, setCurrentSort] = useState('popularity');
-  const [state, dispatch] = useProductsContext();
+  const [productsContext, dispatch] = useProductsContext();
   const ProductsContext = buildActions(dispatch);
-  const [CartState] = useCartContext();
-  const [FavoritesState] = useFavoritesContext();
-  const { cart } = CartState;
-  const { favorites } = FavoritesState;
-  const { products } = state;
-  const query = useQuery().get('search');
+  const [CartContext] = useCartContext();
+  const [FavoritesContext] = useFavoritesContext();
+  const { cart } = CartContext;
+  const { favorites } = FavoritesContext;
+  const { products } = productsContext;
+  const SearchContent = useQuery().get('search');
 
   function handleSetProducts(search) {
     if (search) {
@@ -39,10 +39,10 @@ export const Routes = () => {
   }
 
   useEffect(() => {
-    handleSetProducts(query);
+    handleSetProducts(SearchContent);
   }, []);
   useEffect(() => {
-    handleSetProducts(query);
+    handleSetProducts(SearchContent);
   }, [currentSort]);
 
   return (
