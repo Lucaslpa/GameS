@@ -1,18 +1,18 @@
 import { render, screen } from '@testing-library/react';
-import { FavoritesContextProvider, useFavoritesContext } from '.';
+import { ProductsContextProvider, useProductsContext } from '.';
 import { buildActions } from './buildActions';
 
 const Stub = () => {
-  const [context, dispatch] = useFavoritesContext();
+  const [context, dispatch] = useProductsContext();
   const Context = buildActions(dispatch);
   return (
     <div>
-      <span data-testid="cartLength">{context.favorites.length}</span>
+      <span data-testid="cartLength">{context.products.length}</span>
       <button
         type="button"
         aria-label="Add into context"
         onClick={() => {
-          Context.SET_FAVORITES([1]);
+          Context.SET_PRODUCTS([1]);
         }}
       />
     </div>
@@ -20,11 +20,11 @@ const Stub = () => {
 };
 
 describe('FavoritesConext', () => {
-  it('Should set favorites products into favorites context', async () => {
+  it('Should set products into products context', async () => {
     render(
-      <FavoritesContextProvider>
+      <ProductsContextProvider>
         <Stub />
-      </FavoritesContextProvider>
+      </ProductsContextProvider>
     );
 
     const value = (await screen.findByTestId('cartLength')).textContent;

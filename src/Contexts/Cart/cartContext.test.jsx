@@ -20,7 +20,7 @@ const Stub = () => {
 };
 
 describe('CartConext', () => {
-  it('Should set products to product context', async () => {
+  it('Should set products into cart context', async () => {
     render(
       <CartContextProvider>
         <Stub />
