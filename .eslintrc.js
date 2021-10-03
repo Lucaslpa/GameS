@@ -22,5 +22,14 @@ module.exports = {
     'react/jsx-one-expression-per-line': 'off',
     'react/no-unescaped-entities': 'off',
     'linebreak-style': 'off',
+    'no-undef': 'off',
+    'implicit-arrow-linebreak': 'off',
+    'react/require-default-props': 'off',
+    'react/forbid-prop-types': 'off',
+    'react/jsx-curly-newline': 'off',
+    'no-param-reassign': 'off',
+    'operator-linebreak': 'off',
+    'react/jsx-no-bind': 'off',
+    "no-alert": "off"
   },
 };
