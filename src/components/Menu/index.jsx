@@ -32,6 +32,7 @@ export const Menu = ({ CartQuantity = 0, FavoritesQuantity = 0, onSearch }) => {
           arial-label="Search field"
           type="text"
           onChange={(e) => setSearch(e.target.value)}
+          placeholder="Search a game"
         />
         <Link
           to={Search ? `/?search=${Search}` : '/'}
