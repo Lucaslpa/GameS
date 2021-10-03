@@ -30,5 +30,6 @@ module.exports = {
     'no-param-reassign': 'off',
     'operator-linebreak': 'off',
     'react/jsx-no-bind': 'off',
+    "no-alert": "off"
   },
 };

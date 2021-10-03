@@ -31,7 +31,7 @@ export const Nav = styled.nav`
   ${media.lessThan('medium')`
   z-index: 100;
    position: absolute; 
-   bottom: 3%; 
+   bottom: 10%; 
    right: 5%;
   `}
 `;

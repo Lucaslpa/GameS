@@ -24,13 +24,15 @@ export const Cart = ({ products, freight = 10, onDeleteProduct }) => {
     const productToChange = Products.filter((prod) => prod.id === productID)[0];
     const unchangedProducts = Products.filter((prod) => prod.id !== productID);
 
-    const defaultPrice = productToChange.price / productToChange.quantity;
+    if (ProductNewQuantity > 0) {
+      const defaultPrice = productToChange.price / productToChange.quantity;
 
-    const newPrice = defaultPrice * ProductNewQuantity;
-    productToChange.price = Number(newPrice.toFixed(2));
-    productToChange.quantity = ProductNewQuantity;
+      const newPrice = defaultPrice * ProductNewQuantity;
+      productToChange.price = Number(newPrice.toFixed(2));
+      productToChange.quantity = ProductNewQuantity;
 
-    setProducts([...unchangedProducts, productToChange]);
+      setProducts([...unchangedProducts, productToChange]);
+    }
   }
 
   useEffect(() => {

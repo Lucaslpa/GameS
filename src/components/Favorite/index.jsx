@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { HeartBroken as HeartBrokenSVG } from '@styled-icons/icomoon';
+import { Link } from 'react-router-dom';
 import * as S from './style';
 import { Responsive } from '../Responsive';
 import { Table } from './FavoriteComponents/Table';
@@ -20,7 +21,7 @@ export const Favorite = ({ products, onDeleteProduct }) => {
                 <h1>{product.name}</h1>
                 <span>{product.price}</span>
                 <S.Buttons>
-                  <a href="/">buy</a>
+                  <Link to={`/Product/${product.id}`}>buy</Link>
                   <button
                     type="button"
                     onClick={() => onDeleteProduct(product.id)}
