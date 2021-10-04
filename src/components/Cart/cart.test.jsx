@@ -49,7 +49,7 @@ describe('Cart', () => {
     expect(price.textContent).toBe(` Final price: $${products[0].price + 10}`);
     fireEvent.input(input, { target: { value: 2 } });
     expect(price.textContent).toBe(
-      ` Final price: $405.76`
+      ` Final price: $395.76`
     );
   });
 
